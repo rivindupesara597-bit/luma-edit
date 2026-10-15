@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111214">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Luma Edit">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <title>Luma Edit — Photo Lab</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">L</span><div><strong>LUMA EDIT</strong><small>PHOTO LAB · LOCAL FIRST</small></div></div>
+    <button id="resetBtn" class="quiet" type="button">Reset</button>
+  </header>
+
+  <main>
+    <section class="workspace">
+      <div class="preview-head"><span>PREVIEW</span><span id="fileLabel">No photo loaded</span></div>
+      <div class="preview" id="preview">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">＋</div>
+          <strong>Bring a photo to life</strong>
+          <p>Choose a JPEG or another image your browser can decode.</p>
+          <label class="primary-btn" for="photoInput">Open photo</label>
+        </div>
+        <canvas id="canvas" hidden></canvas>
+      </div>
+      <div class="preview-actions">
+        <label class="secondary-btn" for="photoInput">＋ Open photo</label>
+        <button id="beforeBtn" class="secondary-btn" type="button" disabled>Hold for before</button>
+        <button id="exportBtn" class="primary-btn" type="button" disabled>Export JPEG</button>
+        <input id="photoInput" type="file" accept="image/*,.heic,.heif,.jpg,.jpeg,.png,.webp" hidden>
+      </div>
+      <p class="privacy-note"><span class="dot"></span> Photos are processed in this browser. This starter app does not upload them.</p>
+    </section>
+
+    <section class="editor">
+      <div class="section-title"><div><span class="eyebrow">DEVELOP</span><h1>Light &amp; Color</h1></div><span class="version">V0.1</span></div>
+      <div class="tabs" aria-label="Editing section"><button class="tab active" type="button">Light</button><button class="tab" type="button" disabled>Color · soon</button><button class="tab" type="button" disabled>Effects · soon</button></div>
+      <div id="controls" class="controls">
+        <div class="control"><div class="control-label"><label for="exposure">Exposure</label><output id="exposureOut">0.0</output></div><input id="exposure" data-key="exposure" type="range" min="-2" max="2" step="0.1" value="0"><div class="range-labels"><span>−2</span><span>0</span><span>+2</span></div></div>
+        <div class="control"><div class="control-label"><label for="contrast">Contrast</label><output id="contrastOut">0</output></div><input id="contrast" data-key="contrast" type="range" min="-100" max="100" step="1" value="0"><div class="range-labels"><span>−100</span><span>0</span><span>+100</span></div></div>
+        <div class="control"><div class="control-label"><label for="highlights">Highlights</label><output id="highlightsOut">0</output></div><input id="highlights" data-key="highlights" type="range" min="-100" max="100" step="1" value="0"><div class="range-labels"><span>−100</span><span>0</span><span>+100</span></div></div>
+        <div class="control"><div class="control-label"><label for="shadows">Shadows</label><output id="shadowsOut">0</output></div><input id="shadows" data-key="shadows" type="range" min="-100" max="100" step="1" value="0"><div class="range-labels"><span>−100</span><span>0</span><span>+100</span></div></div>
+        <div class="control"><div class="control-label"><label for="saturation">Saturation</label><output id="saturationOut">0</output></div><input id="saturation" data-key="saturation" type="range" min="-100" max="100" step="1" value="0"><div class="range-labels"><span>−100</span><span>0</span><span>+100</span></div></div>
+        <div class="control"><div class="control-label"><label for="warmth">Warmth</label><output id="warmthOut">0</output></div><input id="warmth" data-key="warmth" type="range" min="-50" max="50" step="1" value="0"><div class="range-labels"><span>Cool</span><span>Neutral</span><span>Warm</span></div></div>
+      </div>
+      <div class="notice"><strong>Prototype note</strong><p>These are starter adjustments, not Lightroom-equivalent RAW development. Highlights, shadows and warmth are approximations. We’ll replace them with proper pixel processing as the project grows.</p></div>
+    </section>
+  </main>
+  <footer>Built for photographers · Offline-capable after first load · No account required</footer>
+  <script src="./app.js"></script>
+</body>
+</html>
